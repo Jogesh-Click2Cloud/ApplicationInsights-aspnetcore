@@ -3,7 +3,8 @@
     <Import Project="Signing.props"/>
 
     <PropertyGroup>
-        <CliZipFile>$(BUILD_ARTIFACTSTAGINGDIRECTORY)\dotnet-dev-win-x64.latest.zip</CliZipFile>
+        <!--<CliZipFile>$(BUILD_ARTIFACTSTAGINGDIRECTORY)\dotnet-dev-win-x64.latest.zip</CliZipFile>-->
+        <CliZipFile>$(BUILD_ARTIFACTSTAGINGDIRECTORY)\dotnet-dev-win-x64.1.0.0-preview2-003131.zip</CliZipFile>
         <CliToolsPath>$(BUILD_ARTIFACTSTAGINGDIRECTORY)\dotnet-dev-win-x64.latest</CliToolsPath>
         <!-- Library -->
         <ProjectToBuild>.\src\Microsoft.ApplicationInsights.AspNetCore\project.json</ProjectToBuild>
@@ -13,7 +14,6 @@
         <!--<Solution Include="src\Microsoft.ApplicationInsights.AspNetCore\Microsoft.ApplicationInsights.AspNetCore.xproj" />-->
         <!-- Tests -->
         <TestProject Condition="$(RunTests) != '' And $(RunTests)" Include="test\Microsoft.ApplicationInsights.AspNetCore.Tests\ " />
-        <TestProject Condition="$(RunTests) != '' And $(RunTests)" Include="test\FunctionalTestUtils\ " />
         <TestProject Condition="$(RunTests) != '' And $(RunTests)" Include="test\WebApiShimFw46.FunctionalTests\ " />
         <TestProject Condition="$(RunTests) != '' And $(RunTests)" Include="test\EmptyApp.FunctionalTests\ " />
         <TestProject Condition="$(RunTests) != '' And $(RunTests)" Include="test\MVCFramework45.FunctionalTests\ " />
