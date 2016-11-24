@@ -161,7 +161,8 @@
     </Target>
 
     <Target Name="DownloadCLI">
-        <DownloadFile Address="https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/Latest/dotnet-dev-win-x64.latest.zip" FileName="$(CliZipFile)" />
+        <!--<DownloadFile Address="https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/Latest/dotnet-dev-win-x64.latest.zip" FileName="$(CliZipFile)" />-->
+        <DownloadFile Address="https://download.microsoft.com/download/1/5/2/1523EBE1-3764-4328-8961-D1BD8ECA9295/dotnet-dev-win-x64.1.0.0-preview2-003131.zip" FileName="$(CliZipFile)" />
         <ExtractZipArchive InputFiles="$(CliZipFile)" OutputPath="$(CliToolsPath)" ArchiveFileNameAsRootFolder="false" Overwrite="true" />
     </Target>
 
