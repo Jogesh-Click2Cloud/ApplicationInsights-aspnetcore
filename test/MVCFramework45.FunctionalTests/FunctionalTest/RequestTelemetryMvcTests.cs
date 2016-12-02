@@ -21,7 +21,6 @@ namespace SampleWebAppIntegration.FunctionalTest
                 const string RequestPath = "/";
 
                 var expectedRequestTelemetry = new RequestTelemetry();
-                expectedRequestTelemetry.HttpMethod = "GET";
                 expectedRequestTelemetry.Name = "GET Home/Index";
                 expectedRequestTelemetry.ResponseCode = "200";
                 expectedRequestTelemetry.Success = true;
@@ -39,7 +38,6 @@ namespace SampleWebAppIntegration.FunctionalTest
                 const string RequestPath = "/Home/About/5";
 
                 var expectedRequestTelemetry = new RequestTelemetry();
-                expectedRequestTelemetry.HttpMethod = "GET";
                 expectedRequestTelemetry.Name = "GET Home/About [id]";
                 expectedRequestTelemetry.ResponseCode = "200";
                 expectedRequestTelemetry.Success = true;
@@ -57,7 +55,6 @@ namespace SampleWebAppIntegration.FunctionalTest
                 const string RequestPath = "/not/existing/controller";
 
                 var expectedRequestTelemetry = new RequestTelemetry();
-                expectedRequestTelemetry.HttpMethod = "GET";
                 expectedRequestTelemetry.Name = "GET /not/existing/controller";
                 expectedRequestTelemetry.ResponseCode = "404";
                 expectedRequestTelemetry.Success = false;

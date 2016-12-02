@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace FunctionalTestUtils
+﻿namespace FunctionalTestUtils
 {
     using System;
     using System.Diagnostics;
@@ -8,6 +6,7 @@ namespace FunctionalTestUtils
     using System.Net.Http;
     using System.Reflection;
     using System.Threading;
+    using System.Threading.Tasks;
     using Microsoft.ApplicationInsights.DataContracts;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.DependencyInjection;
@@ -48,7 +47,6 @@ namespace FunctionalTestUtils
             Assert.Equal(expected.Url, actual.Url);
             Assert.InRange(actual.Timestamp, testStart, DateTimeOffset.Now);
             Assert.True(actual.Duration < timer.Elapsed, "duration");
-            Assert.Equal(expected.HttpMethod, actual.HttpMethod);
         }
 
         public void ValidateBasicException(InProcessServer server, string requestPath, ExceptionTelemetry expected)
@@ -69,7 +67,6 @@ namespace FunctionalTestUtils
 
             Assert.Equal(expected.Exception.GetType(), actual.Exception.GetType());
             Assert.NotEmpty(actual.Exception.StackTrace);
-            Assert.Equal(actual.HandledAt, actual.HandledAt);
             Assert.NotEmpty(actual.Context.Operation.Name);
             Assert.NotEmpty(actual.Context.Operation.Id);
         }
@@ -122,7 +119,7 @@ namespace FunctionalTestUtils
                 do
                 {
                     Thread.Sleep(1000);
-                    numberOfCountersSent = server.BackChannel.Buffer.OfType<PerformanceCounterTelemetry>().Distinct().Count();
+                    numberOfCountersSent = server.BackChannel.Buffer.OfType<MetricTelemetry>().Distinct().Count();
                 } while (numberOfCountersSent == 0 && DateTime.Now < timeout);
 
                 Assert.True(numberOfCountersSent > 0);
